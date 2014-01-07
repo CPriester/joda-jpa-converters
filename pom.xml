@@ -47,7 +47,7 @@
         </dependency>
         
         <!-- Hibernate provider -->
-        <!-- 
+         
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -60,7 +60,6 @@
             <version>${org.hibernate.version}</version>
             <scope>test</scope>
         </dependency>
-        -->
     </dependencies>
     
 </project>

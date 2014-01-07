@@ -114,4 +114,37 @@ public class JodaDateTimeConverterTest {
             fail(ex.getMessage());
         }
     }
+        
+         @Test
+    public void testPersistEntityORMHibernate() {
+        EntityManagerFactory emf = null;
+        EntityManager em = null;
+        try {
+            emf = Persistence.createEntityManagerFactory("JodaConverterTestHibernate");
+            em = emf.createEntityManager();
+            final DateTime current = DateTime.now();
+
+            DateTimeContainingPOJO entity = new DateTimeContainingPOJO(current);
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            em.persist(entity);
+            tx.commit();
+
+            tx = em.getTransaction();
+            tx.begin();
+            DateTimeContainingPOJO result = em.find(DateTimeContainingPOJO.class, entity.getId());
+            tx.commit();
+
+            assertEquals(current, result.getDateTime());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            if (em != null) {
+                em.close();
+            }
+            if (emf != null) {
+                emf.close();
+            }
+            fail(ex.getMessage());
+        }
+    }
 }

@@ -15,30 +15,33 @@
     </persistence-unit>
     <persistence-unit name="jodaConverterTestORMPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+       
         <mapping-file>META-INF/pojo.xml</mapping-file>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
-            <!-- Start Eclipselink config -->
+       
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testormdb"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
-            <!-- End Eclipselink config -->
-            
-            <!-- Start Hibernate config -->
-            <!--
-            <property name="hibernate.connection.username" value="sa"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
-            <property name="hibernate.connection.password" value=""/>
-            <property name="hibernate.connection.url" value="jdbc:h2:mem:testormdb"/>
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-tables"/>
-            -->
-            <!-- end hibernate config -->
         </properties>
     </persistence-unit>
+    
+    <persistence-unit name="JodaConverterTestHibernate" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <mapping-file>META-INF/pojo.xml</mapping-file>
+    
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.connection.username" value="sa"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+      <property name="hibernate.connection.password" value=""/>
+      <property name="hibernate.connection.url" value="jdbc:h2:mem:test"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+      </properties>
+  </persistence-unit> 
 </persistence>
