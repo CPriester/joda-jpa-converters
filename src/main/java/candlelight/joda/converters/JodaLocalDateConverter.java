@@ -30,11 +30,8 @@ import org.joda.time.contrib.hibernate.PersistentLocalDate;
 @Converter(autoApply = true)
 public class JodaLocalDateConverter implements AttributeConverter<LocalDate, Date> {
 
-    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
-    public Date convertToDatabaseColumn(LocalDate localDate) {
-        PersistentLocalDate pld = new PersistentLocalDate();
-     
-        
+   
+    public Date convertToDatabaseColumn(LocalDate localDate) {        
         return localDate.toDate();
         
         
