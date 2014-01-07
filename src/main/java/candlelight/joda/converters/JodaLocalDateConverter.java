@@ -16,7 +16,10 @@ package candlelight.joda.converters;
 import java.util.Date;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
+import org.joda.time.contrib.hibernate.PersistentLocalDate;
+
 
 /**
  * Converts a Joda LocalDate <-> JPA 2.1 date
@@ -27,8 +30,14 @@ import org.joda.time.LocalDate;
 @Converter(autoApply = true)
 public class JodaLocalDateConverter implements AttributeConverter<LocalDate, Date> {
 
+    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
     public Date convertToDatabaseColumn(LocalDate localDate) {
+        PersistentLocalDate pld = new PersistentLocalDate();
+     
+        
         return localDate.toDate();
+        
+        
     }
 
     public LocalDate convertToEntityAttribute(Date date) {

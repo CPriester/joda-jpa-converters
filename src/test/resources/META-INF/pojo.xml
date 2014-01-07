@@ -12,14 +12,16 @@
     <entity class="candlelight.joda.converters.example.DateTimeContainingPOJO" name="DateTimePojo">        
         <table name="ORM_DATETIME_POJO"/>
         <attributes>
-            <id name="id">
-                <generated-value/>
-            </id>
-            <!--<basic name="id">
+<!--            <id name="id">
                 <column name="id"/>
-            </basic>-->
+                <generated-value/>         
+            </id>-->
+            <id name="id"/>
+            <basic name="id">
+                <column name="id" column-definition="varchar"/>
+            </basic>
             <basic name="dateTime">
-                <column name="dateTime"/>
+                <column name="dateTime" />
             </basic>
         </attributes>
     </entity>

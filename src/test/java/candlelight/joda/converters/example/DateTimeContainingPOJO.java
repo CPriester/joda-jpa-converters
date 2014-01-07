@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
  */
 public class DateTimeContainingPOJO {
 
-    private Long id;
+    private Long id = 1l;
     private DateTime dateTime;
 
     public DateTimeContainingPOJO() {
