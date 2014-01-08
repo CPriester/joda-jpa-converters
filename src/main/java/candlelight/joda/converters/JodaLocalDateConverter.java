@@ -32,6 +32,7 @@ public class JodaLocalDateConverter implements AttributeConverter<LocalDate, Dat
 
    
     public Date convertToDatabaseColumn(LocalDate localDate) {        
+                
         return localDate.toDate();
         
         
